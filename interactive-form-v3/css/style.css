@@ -130,7 +130,8 @@ input {
 
 input:focus {
   background: rgba(255, 255, 255, 1);
-  border-color:  rgb(9, 73, 250);
+  border: 3px solid rgb(9, 73, 250);
+  
 }
 
 input:-webkit-autofill {
@@ -171,7 +172,7 @@ select {
 select:focus {
   background: url(../img/caret.png) calc(100% - 7px) 50% no-repeat rgba(255, 255, 255, 1) !important;
   background-size: 12px auto !important;
-  border-color:  rgb(9, 73, 250);
+  border: 3px solid rgb(9, 73, 250);
 }
 
 select:disabled {
