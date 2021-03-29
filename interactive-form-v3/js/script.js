@@ -20,18 +20,18 @@ jobRole.addEventListener('change', (e)=>{
 });
 
 /*
-T-shirt Info section.
+T-shirt Info section. Color selection is disabled until a theme is chosen.
+When the theme is picked, colors can be selected, but only the colors available
+with the matching data-theme. Listens for changes in the design selection choice
+and adjusts the color selection accordingly.
 */
 
 const design = document.querySelector('[name="user-design"]');
-console.log(design);
 const divShirtColor = document.querySelector('div[id="shirt-colors"]');
-console.log(divShirtColor);
-divShirtColor.hidden=true;
 const jsPunShirt = document.querySelectorAll('#shirt-colors option[data-theme="js puns"]');
-console.log(jsPunShirt);
 const heartJsShirt = document.querySelectorAll('#shirt-colors option[data-theme="heart js"]');
-console.log(heartJsShirt);
+
+divShirtColor.hidden=true;
 
 design.addEventListener('change', (e) =>{
     if (e.target.value=='js puns') {
@@ -48,3 +48,29 @@ design.addEventListener('change', (e) =>{
         }
     }
 });
+
+/*
+Register for activities.
+*/
+
+let total = document.querySelector('p#activities-cost');
+console.log(total);
+const eventRegister = document.querySelector('div#activities-box');
+console.log(eventRegister);
+let eventSum = 0;
+
+
+eventRegister.addEventListener('change', (e)=> {
+    if(e.target.type=="checkbox") {
+        let dataCost = e.target.querySelector('data-cost').value;
+        if(e.target.checked) {
+            console.log(dataCost);
+            eventSum += dataCost;
+        } else if (e.target.checked = false) {
+            eventSum = eventSum - dataCost;
+        }
+        total.textContent = `Total:$${eventSum}`
+        console.log(total);
+    }
+});
+
