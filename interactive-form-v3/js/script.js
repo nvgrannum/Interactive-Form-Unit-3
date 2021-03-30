@@ -110,18 +110,11 @@ paymentInfo.addEventListener('change', (e)=> {
 Validation field
 */
 
-const form = document.querySelector('div[class="container"]').firstElementChild;
-
-const email = document.querySelector('[name="user-email"]');
-
-const cardNum = document.querySelector('[name="user-cc-num"]');
-const cardZip = document.querySelector('[name="user-zip"]');
-const cardCvv = document.querySelector('[name="user-cvv"]');
-
 // function validationTest(target) {
 //     let valueTest = 
 //     if (valueTest) {
 //         alert(`${target} passed`);
+//         target.nextElementSibling.classList.add('hint');
 //     } else if (target.value == ''){
 //         e.preventDefault();
 //         target.classList.add('error','error-border');
@@ -134,6 +127,7 @@ const cardCvv = document.querySelector('[name="user-cvv"]');
 //         target.classList.add('error','error-border');
 //     }
 // }
+const form = document.querySelector('div[class="container"]').firstElementChild;
 
 form.addEventListener('submit', (e) => {
 //Username Validation
@@ -143,6 +137,7 @@ form.addEventListener('submit', (e) => {
 
     if (usernameTest){
         username.classList.remove('error', 'error-border');
+        //username.nextElementSibling.classList.add('hint');
         alert('Name');
     } else if (usernameValue == '') {
         e.preventDefault();
@@ -158,12 +153,13 @@ form.addEventListener('submit', (e) => {
     };
 
 //Email Validation
-
+    const email = document.querySelector('[name="user-email"]');    
     let emailValue =email.value;
     let emailTest = /[^@]+@[a-z]+\.com/i.test(emailValue);
 
     if (emailTest){
         email.classList.remove('error', 'error-border');
+        email.nextElementSibling.classList.add('hint');
         alert('Email');
     } else if (emailValue == '') {
         e.preventDefault();
@@ -179,27 +175,72 @@ form.addEventListener('submit', (e) => {
     };
 //Registration Validation
 
-let checkboxItems = document.querySelectorAll('input[type="checkox"]');
-console.log(checkboxItems); 
+// let checkboxItems = document.querySelectorAll("input[type='checkox']");
+// console.log(checkboxItems); 
 
 //Creditcard Validation
+    const cardNum = document.querySelector('[name="user-cc-num"]');
+    const cardZip = document.querySelector('[name="user-zip"]');
+    const cardCvv = document.querySelector('[name="user-cvv"]');
 
-//     let emailValue =email.value;
-//     let emailTest = /[^@]+@[a-z]+\.com/i.test(emailValue);
+    let creditValue =cardNum.value;
+    let creditTest = /\d{13,16}/.test(creditValue);
+    let zipValue = cardZip.value;
+    let zipTest = /^\d{5}$/.test(zipValue);
+    let cvvValue = cardCvv.value;
+    let cvvTest = /^\d{3}$/.test(cvvValue);
 
-//     if (emailTest){
-//         email.classList.remove('error', 'error-border');
-//         alert('Email');
-//     } else if (emailValue == '') {
-//         e.preventDefault();
-//         email.classList.add('error', 'error-border');
-//         email.nextElementSibling.classList.remove('hint');
-//         email.nextElementSibling.textContent="Email field cannot be blank";
-        
-//     } else {
-//         e.preventDefault();        
-//         email.nextElementSibling.textContent="Input must be formatted correctly";
-//         email.classList.add('error', 'error-border');
-//         email.nextElementSibling.classList.remove('hint');
-//     };
+    if (creditCardSelected.selected) {
+    //CC Number Test    
+        if (creditTest){
+            cardNum.classList.remove('error', 'error-border');
+            cardNum.nextElementSibling.classList.add('hint');
+            alert('Credit');
+        } else if (creditValue == '') {
+            e.preventDefault();
+            cardNum.classList.add('error', 'error-border');
+            cardNum.nextElementSibling.classList.remove('hint');
+            cardNum.nextElementSibling.textContent="Creditcard field cannot be blank";
+            
+        } else {
+            e.preventDefault();        
+            cardNum.nextElementSibling.textContent="Input must be between 13 and 16 digits";
+            cardNum.classList.add('error', 'error-border');
+            cardNum.nextElementSibling.classList.remove('hint');
+    };
+    //zipcode test
+        if(zipTest) {
+            cardZip.classList.remove('error', 'error-border');
+            cardZip.nextElementSibling.classList.add('hint');
+            alert('Zip');
+        } else if (zipValue == '') {
+            e.preventDefault();
+            cardZip.classList.add('error', 'error-border');
+            cardZip.nextElementSibling.classList.remove('hint');
+            cardZip.nextElementSibling.textContent="Zip cannot be blank";
+            
+        } else {
+            e.preventDefault();        
+            cardZip.nextElementSibling.textContent="Input must be 5 digits";
+            cardZip.classList.add('error', 'error-border');
+            cardZip.nextElementSibling.classList.remove('hint');
+    };
+    //CVV Test
+        if(cvvTest) {
+            cardCvv.classList.remove('error', 'error-border');
+            cardCvv.nextElementSibling.classList.add('hint');
+            alert('CVV');
+        } else if (cvvValue == '') {
+            e.preventDefault();
+            cardCvv.classList.add('error', 'error-border');
+            cardCvv.nextElementSibling.classList.remove('hint');
+            cardCvv.nextElementSibling.textContent="CVV cannot be blank";
+            
+        } else {
+            e.preventDefault();        
+            cardCvv.nextElementSibling.textContent="Input must be 3 digits";
+            cardCvv.classList.add('error', 'error-border');
+            cardCvv.nextElementSibling.classList.remove('hint');
+        }
+    }
 });
