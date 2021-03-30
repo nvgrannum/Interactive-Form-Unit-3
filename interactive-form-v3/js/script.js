@@ -1,6 +1,6 @@
 
 const username = document.querySelector('input[name="user-name"]');
-console.log(username);
+console.log(username.nextElementSibling.textContent);
 username.focus();
 
 /*
@@ -121,17 +121,21 @@ const cardCvv = document.querySelector('[name="user-cvv"]');
 
 form.addEventListener('submit', (e) => {
     let usernameValue = username.value;
+    console.log(usernameValue);
     let usernameTest = /[a-z\-\']+/i.test(usernameValue);
 
     if (usernameTest){
-        username.classList.remove('error');
+        username.classList.remove('error', 'error-border');
         alert('yay');
     } else if (usernameValue = '') {
         e.preventDefault();
-        username.classList.add('error');
+        username.classList.add('error', 'error-border');
+        username.nextElementSibling.classList.remove('hint');
         
     } else {
-        e.preventDefault();
-        username.classList.add('error');
+        e.preventDefault();        
+        username.nextElementSibling.textContent="Input must be formatted correctly";
+        username.classList.add('error', 'error-border');
+        username.nextElementSibling.classList.remove('hint');
     };
 });
