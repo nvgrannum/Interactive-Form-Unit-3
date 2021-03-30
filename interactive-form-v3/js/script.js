@@ -1,4 +1,8 @@
 
+const username = document.querySelector('input[name="user-name"]');
+console.log(username);
+username.focus();
+
 /*
 Job Role section. Listens for change in the selection of the Job Role 
 dropdown menu. If 'Other' is the selected role, an input box is displayed
@@ -60,7 +64,7 @@ let eventSum = 0;
 eventRegister.addEventListener('change', (e)=> {
     if(e.target.type=="checkbox") {
         let dataCost = e.target.getAttribute('data-cost');
-        let eventDate = e.target.getAttribute('data-day-and-time');
+        //let eventDate = e.target.getAttribute('data-day-and-time');
         if(e.target.checked) {
             eventSum += +dataCost;
         } else {
@@ -77,6 +81,7 @@ const paymentInfo = document.querySelector('[name="user-payment"]');
 
 const creditCardSelected = document.querySelector('#payment option[value="credit-card"]')
 const creditCardInfo = document.querySelector('div#credit-card');
+creditCardSelected.selected=true;
 
 const paypalSelected = document.querySelector('#payment option[value="paypal"]')
 const paypalInfo = document.querySelector('div#paypal');
@@ -102,3 +107,31 @@ paymentInfo.addEventListener('change', (e)=> {
     }
 });
 
+/*
+Validation field
+*/
+
+const form = document.querySelector('div[class="container"]').firstElementChild;
+
+const email = document.querySelector('[name="user-email"]');
+
+const cardNum = document.querySelector('[name="user-cc-num"]');
+const cardZip = document.querySelector('[name="user-zip"]');
+const cardCvv = document.querySelector('[name="user-cvv"]');
+
+form.addEventListener('submit', (e) => {
+    let usernameValue = username.value;
+    let usernameTest = /[a-z\-\']+/i.test(usernameValue);
+
+    if (usernameTest){
+        username.classList.remove('error');
+        alert('yay');
+    } else if (usernameValue = '') {
+        e.preventDefault();
+        username.classList.add('error');
+        
+    } else {
+        e.preventDefault();
+        username.classList.add('error');
+    };
+});
