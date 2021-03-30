@@ -1,6 +1,5 @@
 
 const username = document.querySelector('input[name="user-name"]');
-console.log(username.nextElementSibling.textContent);
 username.focus();
 
 /*
@@ -119,18 +118,37 @@ const cardNum = document.querySelector('[name="user-cc-num"]');
 const cardZip = document.querySelector('[name="user-zip"]');
 const cardCvv = document.querySelector('[name="user-cvv"]');
 
+// function validationTest(target) {
+//     let valueTest = 
+//     if (valueTest) {
+//         alert(`${target} passed`);
+//     } else if (target.value == ''){
+//         e.preventDefault();
+//         target.classList.add('error','error-border');
+//         target.nextElementSibling.classList.remove('hint');
+//         target.nextElementSibling.textContent = `${target.nextElementSibling.textContent}`
+//     } else {
+//         e.preventDefault();
+//         target.nextElementSibling.textContent = `Input must be formatted correctly.`
+//         target.nextElementSibling.classList.remove('hint');
+//         target.classList.add('error','error-border');
+//     }
+// }
+
 form.addEventListener('submit', (e) => {
+//Username Validation
+
     let usernameValue = username.value;
-    console.log(usernameValue);
-    let usernameTest = /[a-z\-\']+/i.test(usernameValue);
+    let usernameTest = /[a-z\-']+/i.test(usernameValue);
 
     if (usernameTest){
         username.classList.remove('error', 'error-border');
-        alert('yay');
-    } else if (usernameValue = '') {
+        alert('Name');
+    } else if (usernameValue == '') {
         e.preventDefault();
         username.classList.add('error', 'error-border');
         username.nextElementSibling.classList.remove('hint');
+        username.nextElementSibling.textContent="Name field cannot be blank";
         
     } else {
         e.preventDefault();        
@@ -138,4 +156,50 @@ form.addEventListener('submit', (e) => {
         username.classList.add('error', 'error-border');
         username.nextElementSibling.classList.remove('hint');
     };
+
+//Email Validation
+
+    let emailValue =email.value;
+    let emailTest = /[^@]+@[a-z]+\.com/i.test(emailValue);
+
+    if (emailTest){
+        email.classList.remove('error', 'error-border');
+        alert('Email');
+    } else if (emailValue == '') {
+        e.preventDefault();
+        email.classList.add('error', 'error-border');
+        email.nextElementSibling.classList.remove('hint');
+        email.nextElementSibling.textContent="Email field cannot be blank";
+        
+    } else {
+        e.preventDefault();        
+        email.nextElementSibling.textContent="Input must be formatted correctly";
+        email.classList.add('error', 'error-border');
+        email.nextElementSibling.classList.remove('hint');
+    };
+//Registration Validation
+
+let checkboxItems = document.querySelectorAll('input[type="checkox"]');
+console.log(checkboxItems); 
+
+//Creditcard Validation
+
+//     let emailValue =email.value;
+//     let emailTest = /[^@]+@[a-z]+\.com/i.test(emailValue);
+
+//     if (emailTest){
+//         email.classList.remove('error', 'error-border');
+//         alert('Email');
+//     } else if (emailValue == '') {
+//         e.preventDefault();
+//         email.classList.add('error', 'error-border');
+//         email.nextElementSibling.classList.remove('hint');
+//         email.nextElementSibling.textContent="Email field cannot be blank";
+        
+//     } else {
+//         e.preventDefault();        
+//         email.nextElementSibling.textContent="Input must be formatted correctly";
+//         email.classList.add('error', 'error-border');
+//         email.nextElementSibling.classList.remove('hint');
+//     };
 });
