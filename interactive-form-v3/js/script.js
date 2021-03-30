@@ -127,6 +127,7 @@ Validation field
 //         target.classList.add('error','error-border');
 //     }
 // }
+
 const form = document.querySelector('div[class="container"]').firstElementChild;
 
 form.addEventListener('submit', (e) => {
@@ -175,8 +176,8 @@ form.addEventListener('submit', (e) => {
     };
 //Registration Validation
 
-// let checkboxItems = document.querySelectorAll("input[type='checkox']");
-// console.log(checkboxItems); 
+let checkboxItems = document.querySelectorAll("input[type='checkox']");
+console.log(checkboxItems); 
 
 //Creditcard Validation
     const cardNum = document.querySelector('[name="user-cc-num"]');
