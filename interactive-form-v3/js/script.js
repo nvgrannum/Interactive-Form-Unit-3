@@ -137,19 +137,19 @@ form.addEventListener('submit', (e) => {
     let usernameTest = /[a-z\-']+/i.test(usernameValue);
 
     if (usernameTest){
-        username.classList.remove('error', 'error-border');
-        //username.nextElementSibling.classList.add('hint');
+        username.parentNode.classList.remove('error', 'error-border', 'not-valid');
+        username.nextElementSibling.classList.add('hint');
         alert('Name');
     } else if (usernameValue == '') {
         e.preventDefault();
-        username.classList.add('error', 'error-border');
+        username.parentNode.classList.add('error', 'error-border', 'not-valid');
         username.nextElementSibling.classList.remove('hint');
         username.nextElementSibling.textContent="Name field cannot be blank";
         
     } else {
         e.preventDefault();        
         username.nextElementSibling.textContent="Input must be formatted correctly";
-        username.classList.add('error', 'error-border');
+        username.parentNode.classList.add('error', 'error-border', 'not-valid');
         username.nextElementSibling.classList.remove('hint');
     };
 
@@ -159,25 +159,33 @@ form.addEventListener('submit', (e) => {
     let emailTest = /[^@]+@[a-z]+\.com/i.test(emailValue);
 
     if (emailTest){
-        email.classList.remove('error', 'error-border');
+        email.parentNode.classList.remove('error', 'error-border', 'not-valid');
         email.nextElementSibling.classList.add('hint');
         alert('Email');
     } else if (emailValue == '') {
         e.preventDefault();
-        email.classList.add('error', 'error-border');
+        email.parentNode.classList.add('error', 'error-border', 'not-valid');
         email.nextElementSibling.classList.remove('hint');
         email.nextElementSibling.textContent="Email field cannot be blank";
         
     } else {
         e.preventDefault();        
         email.nextElementSibling.textContent="Input must be formatted correctly";
-        email.classList.add('error', 'error-border');
+        email.parentNode.classList.add('error', 'error-border', 'not-valid');
         email.nextElementSibling.classList.remove('hint');
     };
 //Registration Validation
 
-let checkboxItems = document.querySelectorAll("input[type='checkox']");
-console.log(checkboxItems); 
+    let checkboxItems = document.querySelectorAll("input[type='checkbox']:checked");
+    if (checkboxItems.length == 0) {
+        e.preventDefault();
+        document.querySelector('div#activities-box').parentNode.classList.add('not-valid');
+        document.querySelector('#activities-hint').classList.remove('hint');
+    } else {
+        document.querySelector('div#activities-box').parentNode.classList.remove('not-valid');
+        document.querySelector('#activities-hint').classList.add('hint'); 
+    }
+
 
 //Creditcard Validation
     const cardNum = document.querySelector('[name="user-cc-num"]');
@@ -194,53 +202,53 @@ console.log(checkboxItems);
     if (creditCardSelected.selected) {
     //CC Number Test    
         if (creditTest){
-            cardNum.classList.remove('error', 'error-border');
+            cardNum.parentNode.classList.remove('error', 'error-border', 'not-valid');
             cardNum.nextElementSibling.classList.add('hint');
             alert('Credit');
         } else if (creditValue == '') {
             e.preventDefault();
-            cardNum.classList.add('error', 'error-border');
+            cardNum.parentNode.classList.add('error', 'error-border', 'not-valid');
             cardNum.nextElementSibling.classList.remove('hint');
             cardNum.nextElementSibling.textContent="Creditcard field cannot be blank";
             
         } else {
             e.preventDefault();        
             cardNum.nextElementSibling.textContent="Input must be between 13 and 16 digits";
-            cardNum.classList.add('error', 'error-border');
+            cardNum.parentNode.classList.add('error', 'error-border', 'not-valid');
             cardNum.nextElementSibling.classList.remove('hint');
     };
     //zipcode test
         if(zipTest) {
-            cardZip.classList.remove('error', 'error-border');
+            cardZip.parentNode.classList.remove('error', 'error-border', 'not-valid');
             cardZip.nextElementSibling.classList.add('hint');
             alert('Zip');
         } else if (zipValue == '') {
             e.preventDefault();
-            cardZip.classList.add('error', 'error-border');
+            cardZip.parentNode.classList.add('error', 'error-border', 'not-valid');
             cardZip.nextElementSibling.classList.remove('hint');
             cardZip.nextElementSibling.textContent="Zip cannot be blank";
             
         } else {
             e.preventDefault();        
-            cardZip.nextElementSibling.textContent="Input must be 5 digits";
-            cardZip.classList.add('error', 'error-border');
+            cardZip.parentNode.classList.add('error', 'error-border', 'not-valid');
             cardZip.nextElementSibling.classList.remove('hint');
+            cardZip.nextElementSibling.textContent="Input must be 5 digits";
     };
     //CVV Test
         if(cvvTest) {
-            cardCvv.classList.remove('error', 'error-border');
+            cardCvv.parentNode.classList.remove('error', 'error-border', 'not-valid');
             cardCvv.nextElementSibling.classList.add('hint');
             alert('CVV');
         } else if (cvvValue == '') {
             e.preventDefault();
-            cardCvv.classList.add('error', 'error-border');
+            cardCvv.parentNode.classList.add('error', 'error-border', 'not-valid');
             cardCvv.nextElementSibling.classList.remove('hint');
             cardCvv.nextElementSibling.textContent="CVV cannot be blank";
             
         } else {
             e.preventDefault();        
             cardCvv.nextElementSibling.textContent="Input must be 3 digits";
-            cardCvv.classList.add('error', 'error-border');
+            cardCvv.parentNode.classList.add('error', 'error-border', 'not-valid');
             cardCvv.nextElementSibling.classList.remove('hint');
         }
     }
