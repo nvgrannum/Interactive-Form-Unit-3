@@ -117,9 +117,10 @@ paymentInfo.addEventListener('change', (e)=> {
 });
 
 /*
-Validation field
+Validation field.
 */
 
+// Attempt at making a function that cleans up the validation eventlistener.
 // function validationTest(target) {
 //     let valueTest = 
 //     if (valueTest) {
