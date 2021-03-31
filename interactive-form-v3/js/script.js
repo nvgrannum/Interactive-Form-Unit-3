@@ -149,6 +149,7 @@ form.addEventListener('submit', (e) => {
 
     if (usernameTest){
         username.parentNode.classList.remove('error', 'error-border', 'not-valid');
+        username.parentNode.classList.add('valid');
         username.nextElementSibling.classList.add('hint');
     } else if (usernameValue == '') {
         e.preventDefault();
@@ -170,6 +171,7 @@ form.addEventListener('submit', (e) => {
 
     if (emailTest){
         email.parentNode.classList.remove('error', 'error-border', 'not-valid');
+        email.parentNode.classList.add('valid');
         email.nextElementSibling.classList.add('hint');
     } else if (emailValue == '') {
         e.preventDefault();
@@ -192,6 +194,7 @@ form.addEventListener('submit', (e) => {
         document.querySelector('#activities-hint').classList.remove('hint');
     } else {
         document.querySelector('div#activities-box').parentNode.classList.remove('not-valid');
+        document.querySelector('div#activities-box').parentNode.classList.add('valid');
         document.querySelector('#activities-hint').classList.add('hint'); 
     }
 
@@ -212,6 +215,7 @@ form.addEventListener('submit', (e) => {
     //CC Number Test    
         if (creditTest){
             cardNum.parentNode.classList.remove('error', 'error-border', 'not-valid');
+            cardNum.parentNode.classList.add('valid');
             cardNum.nextElementSibling.classList.add('hint');
         } else if (creditValue == '') {
             e.preventDefault();
@@ -228,6 +232,7 @@ form.addEventListener('submit', (e) => {
     //zipcode test
         if(zipTest) {
             cardZip.parentNode.classList.remove('error', 'error-border', 'not-valid');
+            cardZip.parentNode.classList.add('valid');
             cardZip.nextElementSibling.classList.add('hint');
         } else if (zipValue == '') {
             e.preventDefault();
@@ -244,6 +249,7 @@ form.addEventListener('submit', (e) => {
     //CVV Test
         if(cvvTest) {
             cardCvv.parentNode.classList.remove('error', 'error-border', 'not-valid');
+            cardCvv.parentNode.classList.add('valid');
             cardCvv.nextElementSibling.classList.add('hint');
         } else if (cvvValue == '') {
             e.preventDefault();
