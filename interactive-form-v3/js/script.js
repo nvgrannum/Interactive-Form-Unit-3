@@ -42,11 +42,16 @@ design.addEventListener('change', (e) =>{
         for (let i=0, j=0; i<heartJsShirt.length, j<jsPunShirt.length; i++, j++){
             heartJsShirt[i].hidden=true;
             jsPunShirt[j].hidden=false;
+            heartJsShirt[i].selected=false;
+            jsPunShirt[0].selected=true;
         }
     } else if (e.target.value=='heart js') {
         for (let i=0, j=0; i<heartJsShirt.length, j<jsPunShirt.length; i++, j++){
             heartJsShirt[i].hidden=false;
             jsPunShirt[j].hidden=true;
+            jsPunShirt[j].selected=false;
+            heartJsShirt[0].selected=true;
+
         }
     }
 });
