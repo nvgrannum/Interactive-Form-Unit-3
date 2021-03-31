@@ -92,15 +92,15 @@ Payment info section.
 */
 const paymentInfo = document.querySelector('[name="user-payment"]');
 
-const creditCardSelected = document.querySelector('#payment option[value="credit-card"]')
+const creditCardSelected = document.querySelector('#payment option[value="credit-card"]');
 const creditCardInfo = document.querySelector('div#credit-card');
 creditCardSelected.selected=true;
 
-const paypalSelected = document.querySelector('#payment option[value="paypal"]')
+const paypalSelected = document.querySelector('#payment option[value="paypal"]');
 const paypalInfo = document.querySelector('div#paypal');
 paypalInfo.hidden=true;
 
-const bitcoinSelected = document.querySelector('#payment option[value="bitcoin"]')
+const bitcoinSelected = document.querySelector('#payment option[value="bitcoin"]');
 const bitcoinInfo = document.querySelector('div#bitcoin');
 bitcoinInfo.hidden=true;
 
