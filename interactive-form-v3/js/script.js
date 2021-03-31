@@ -73,7 +73,15 @@ eventRegister.addEventListener('change', (e)=> {
     }
 });
 
-
+const checkboxChecks = document.querySelectorAll("input[type='checkbox']");
+for (let i=0; i<checkboxChecks.length; i++) {
+    checkboxChecks[i].addEventListener('focus',()=> {
+        checkboxChecks[i].parentNode.classList.add('focus');
+    });
+    checkboxChecks[i].addEventListener('blur',()=> {
+        checkboxChecks[i].parentNode.classList.remove('focus');
+    });
+};
 
 /*
 Payment info section.
@@ -193,7 +201,7 @@ form.addEventListener('submit', (e) => {
     const cardCvv = document.querySelector('[name="user-cvv"]');
 
     let creditValue =cardNum.value;
-    let creditTest = /\d{13,16}/.test(creditValue);
+    let creditTest = /^\d{13,16}$/.test(creditValue);
     let zipValue = cardZip.value;
     let zipTest = /^\d{5}$/.test(zipValue);
     let cvvValue = cardCvv.value;

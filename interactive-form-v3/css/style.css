@@ -471,7 +471,7 @@ button:hover {
 
 .focus {
   background: rgba(255, 255, 255, 1) !important;
-  border-color:  rgb(9, 73, 250) !important;
+  border: 3px solid rgb(9, 73, 250) !important;
 }
 
 .disabled {
