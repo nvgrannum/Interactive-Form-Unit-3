@@ -51,7 +51,6 @@ design.addEventListener('change', (e) =>{
             jsPunShirt[j].hidden=true;
             jsPunShirt[j].selected=false;
             heartJsShirt[0].selected=true;
-
         }
     }
 });
